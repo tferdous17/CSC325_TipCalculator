@@ -38,27 +38,6 @@ public class TipCalculatorController {
     @FXML
     private TextField totalTextField;
 
-
-//    BigDecimal total = amount.add(tip);
-
-    // calculates and displays the tip and total amounts
-    @FXML
-    private void calculateButtonPressed(ActionEvent event) {
-        try {
-//            BigDecimal amount = new BigDecimal(amountTextField.getText());
-//            BigDecimal tip = amount.multiply(tipPercentage);
-//            BigDecimal total = amount.add(tip);
-
-//            tipTextField.setText(currency.format(tip));
-//            totalTextField.setText(currency.format(total));
-        }
-        catch (NumberFormatException ex) {
-            amountTextField.setText("Enter amount");
-            amountTextField.selectAll();
-            amountTextField.requestFocus();
-        }
-    }
-
     // called by FXMLLoader to initialize the controller
     public void initialize() {
         // 0-4 rounds down, 5-9 rounds up
