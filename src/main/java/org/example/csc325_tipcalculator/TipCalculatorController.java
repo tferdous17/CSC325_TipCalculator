@@ -1,5 +1,6 @@
 package org.example.csc325_tipcalculator;
 
+import javafx.beans.binding.Bindings;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -37,16 +38,19 @@ public class TipCalculatorController {
     @FXML
     private TextField totalTextField;
 
+
+//    BigDecimal total = amount.add(tip);
+
     // calculates and displays the tip and total amounts
     @FXML
     private void calculateButtonPressed(ActionEvent event) {
         try {
-            BigDecimal amount = new BigDecimal(amountTextField.getText());
-            BigDecimal tip = amount.multiply(tipPercentage);
-            BigDecimal total = amount.add(tip);
+//            BigDecimal amount = new BigDecimal(amountTextField.getText());
+//            BigDecimal tip = amount.multiply(tipPercentage);
+//            BigDecimal total = amount.add(tip);
 
-            tipTextField.setText(currency.format(tip));
-            totalTextField.setText(currency.format(total));
+//            tipTextField.setText(currency.format(tip));
+//            totalTextField.setText(currency.format(total));
         }
         catch (NumberFormatException ex) {
             amountTextField.setText("Enter amount");
@@ -69,6 +73,13 @@ public class TipCalculatorController {
                         tipPercentage =
                                 BigDecimal.valueOf(newValue.intValue() / 100.0);
                         tipPercentageLabel.setText(percent.format(tipPercentage));
+
+                        BigDecimal amount = new BigDecimal(amountTextField.getText());
+
+                        BigDecimal tip = amount.multiply(tipPercentage);
+                        tipTextField.setText(currency.format(tip));
+
+                        totalTextField.setText(currency.format(amount.add(tip)));
                     }
                 }
         );
