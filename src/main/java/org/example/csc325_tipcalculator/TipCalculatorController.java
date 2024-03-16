@@ -62,5 +62,23 @@ public class TipCalculatorController {
                     }
                 }
         );
+
+        amountTextField.textProperty().addListener(
+                new ChangeListener<String>() {
+                    @Override
+                    public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
+
+                        BigDecimal amount = new BigDecimal(0);
+                        if (!amountTextField.getText().isEmpty()) {
+                            amount = new BigDecimal(amountTextField.getText());
+                        }
+
+                        BigDecimal tip = amount.multiply(tipPercentage);
+                        tipTextField.setText(currency.format(tip));
+
+                        totalTextField.setText(currency.format(amount.add(tip)));
+                    }
+                }
+        );
     }
 }
